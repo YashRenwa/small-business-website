@@ -8,7 +8,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-mongoose.connect("mongodb://localhost:27017/anotherDB",{useNewUrlParser:true});
+mongoose.connect("mongodb://localhost:27017/webTechDB",{useNewUrlParser:true});
 
 const mainSchema = {
     userName: String,
