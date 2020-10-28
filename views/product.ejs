@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://kit.fontawesome.com/07438abb25.js" crossorigin="anonymous"></script>
+    <script src="product.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <script
+    src="https://kit.fontawesome.com/07438abb25.js"
+    crossorigin="anonymous"
+  ></script>
+    <style>
+        * {
+  box-sizing: border-box;
+}
+body {
+  font-family: Verdana, sans-serif;
+  margin: 0;
+}
+.mySlides {
+  display: none;
+}
+img {
+  vertical-align: middle;
+}
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0px 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+.active,
+.dot:hover {
+  background-color: #717171;
+}
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+@-webkit-keyframes fade {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fade {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@media only screen and (max-width: 300px) {
+  .prev,
+  .next,
+  .text {
+    font-size: 11px;
+  }
+}
+html,
+body {
+  height: 100%;
+  padding: 0px;
+  margin: 0px;
+}
+.p-display {
+  height: 600px;
+  display: inline-block;
+  padding: 30px;
+  margin-left: 50px;
+  justify-content: center;
+}
+.product-image {
+  max-width: 600px;
+  max-height: 600px;
+  float: none;
+  height: auto;
+  width: auto;
+  display: inline-block;
+  margin-left: 30px;
+  margin-top: 30px;
+}
+.product-image .slideshow-container img {
+  height: 500px;
+  width: 500px;
+}
+.product-description {
+  display: inline-block;
+  max-width: 600px;
+  float: right;
+  height: 600px;
+  width: auto;
+  padding-right: 100px;
+  padding-left: 50px;
+  padding-top: 20px;
+  margin-top: 30px;
+}
+.product-description h1 {
+  color: #ffa500;
+}
+.text1 {
+  color: #3b3b3b;
+}
+.text2 {
+  color: #fdbb04;
+}
+.features {
+  margin-left: 50px;
+  margin-top: 30px;
+  padding-left: 50px;
+  padding-right: 30px;
+}
+.features h1 {
+  color: #ffa500;
+}
+.features ul {
+  font-size: 12p;
+  color: #3b3b3b;
+}
+.highlight-1 {
+  padding-left: 80px;
+  color: #717171;
+}
+@media only screen and (max-width: 1200px) {
+  .p-display {
+    width: auto;
+    height: auto;
+  }
+  .product-image {
+    width: auto;
+    height: auto;
+  }
+  .product-description {
+    width: auto;
+    height: auto;
+  }
+}
+@media only screen and (max-width: 1250px) {
+  .text-field {
+    width: 90%;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .p-display {
+    height: auto;
+    width: auto;
+    display: block;
+    margin: 0px;
+    padding: 0px;
+  }
+  .p-display .product-image {
+    height: auto;
+    width: auto;
+    padding: 0px;
+    margin: 0px;
+  }
+  .p-display .product-description {
+    height: auto;
+    width: auto;
+    margin: 0px;
+    padding-right: 0px;
+  }
+  .features {
+    margin: 0px;
+    height: auto;
+    width: auto;
+  }
+}
+.text-field {
+  padding: 10px 15px;
+  display: inline-block;
+  background: #2b2b2b;
+  color: #c2c2c2;
+  margin-bottom: 12px;
+  margin-right: 12px;
+  border-radius: 5px;
+  border: none;
+  width: 40%;
+  font-size: 20px;
+  outline: none;
+  transition: all 0.3s;
+}
+.text-field:hover,
+.message-field:hover {
+  background: #1b1b1b;
+  transition: all 0.3s;
+}
+.btn {
+  padding: 10px 15px;
+  background: #fdbb04;
+  color: #414141;
+  font-size: 12px;
+  float: right;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  font-weight: 600;
+  margin-left: 5px;
+  padding-right: 20p;
+}
+.btn:hover {
+  background: #dfa405;
+  border: 2px solid transparent;
+}
+.message-field {
+  padding: 5px 15px;
+  display: block;
+  background: #2b2b2b;
+  color: #c2c2c2;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  border: none;
+  margin-bottom: 12px;
+  font-size: 20px;
+  outline: none;
+  transition: all 0.3s;
+}
+.contents {
+  min-height: 100%;
+}
+.footer {
+  background: #353535;
+  color: #d1d1d1;
+  height: auto;
+  position: relative;
+}
+.footer .footer-content {
+  height: auto;
+  display: flex;
+}
+.footer .footer-content h1 {
+  color: #fdbb04;
+}
+.footer .footer-content .footer-about {
+  flex: 1;
+  padding-top: 30px;
+  padding-left: 100px;
+}
+.contact-info {
+  font-size: 20px;
+}
+.footer-about address {
+  font-size: 20px;
+}
+.contact-info span {
+  display: block;
+  margin-bottom: 10px;
+}
+.social a {
+  border: 1px solid #969696;
+  color: #d1d1d1;
+  width: 50px;
+  height: 50px;
+  padding-top: 7px;
+  margin: 5px 5px 5px 5px;
+  display: inline-block;
+  text-align: center;
+  font-size: 30px;
+  border-radius: 100%;
+  transition: all 0.3s;
+}
+.social a:hover {
+  border: 2px solid #fdbb04;
+  color: #fdbb04;
+  transition: all 0.3s;
+}
+.footer .footer-content .footer-contact {
+  flex: 1;
+  padding: 20px 60px 10px 60px;
+}
+.bottom {
+  background: #353535;
+  color: #8b8b8b;
+  height: auto;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+}
+img .contact-icon {
+  height: 2px;
+  width: 2px;
+}
+@media only screen and (max-width: 1250px) {
+  .text-field {
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .footer {
+    height: auto;
+  }
+  .footer .footer-content {
+    height: auto;
+    flex-direction: column;
+  }
+  .footer .footer-content .footer-contact {
+    padding-bottom: 10px;
+  }
+  .message-field {
+    width: 100%;
+  }
+  .btn {
+    width: 100%;
+    margin-top: 12px;
+    float: left;
+  }
+  .text-field {
+    width: 100%;
+  }
+  .footer .footer-content .footer-about {
+    padding-left: 60px;
+  }
+}
+.main {
+  height: auto;
+  width: auto;
+}
+.navi {
+  font-size: 18px;
+  background-color: #353535;
+  /* background-image: linear-gradient(260deg, #2376ae 0%, #c16ecf 100%); */
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  padding-bottom: 10px;
+}
+.main-navi {
+  list-style-type: none;
+  display: none;
+}
+.navi-links,
+.logo {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.7);
+}
+.main-navi li {
+  text-align: center;
+  margin: 15px auto;
+}
+.logo {
+  display: inline-block;
+  font-size: 30px;
+  margin-top: 10px;
+  margin-left: 20px;
+}
+.navi-toggle {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 24px;
+}
+.active {
+  display: block;
+}
+@media screen and (min-width: 768px) {
+  .navi {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 0;
+    height: 70px;
+    align-items: center;
+  }
+  .main-navi {
+    display: flex;
+    margin-right: 30px;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+  .main-navi li {
+    margin: 0;
+  }
+  .navi-links {
+    margin-left: 40px;
+  }
+  .logo {
+    margin-top: 0;
+  }
+  .navi-toggle {
+    display: none;
+  }
+  .logo:hover,
+  .navi-links:hover {
+    color: rgba(255, 255, 255, 1);
+  }
+}
+    </style>
+     
+</head>
+<script>
+    var app = angular.module("product_det", []);
+    app.controller("produtctrl",function($scope){
+        $scope.disount=(($scopr.c-$scope.s)/$scope.c)*100;
+        $scope.save=($scope.c-$scope.s);
+        $scope.stock="InStock"
+    });
+</script>
+<body ng-app="product_det">
+    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#"><%= data.shopname %></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Products</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="#">Contact Us</a>
+            </li>
+          </ul>
+        
+        </div>
+      </nav>
+  <div class="p-display">
+    <div class="product-image">
+    <div id="carouselExampleInterval" class="carousel slide" style="width:70%;margin: auto;" data-ride="carousel">
+    <div class="carousel-inner" >
+
+        <h1 style="margin: auto; font-size: 2vw;">Our Shop Images</h1>
+
+        <% if(product[0].images[0] != ""){ %>
+            <div class="carousel-item active" data-interval="5000">
+              <img src=<%= product[0].images[0] %> style="width:40%" class="d-block w-100" alt="...">
+            </div>
+            <% } %>
+            <% if(product[0].images[1] != ""){ %>
+                <div class="carousel-item" data-interval="5000">
+                  <img src=<%=product[0].images[1] %> style="width:40%" class="d-block w-100" alt="...">
+                </div>
+                <% } %>
+          <% if(product[0].images[2] != ""){ %>
+          <div class="carousel-item" data-interval="5000">
+            <img src=<%=product[0].images[2] %> style="width:40%" class="d-block w-100" alt="...">
+          </div>
+          <% } %>
+          <% if(product[0].images[3] != ""){ %>
+            <div class="carousel-item" data-interval="5000">
+              <img src=<%=product[0].images[3] %> style="width:40%" class="d-block w-100" alt="...">
+            </div>
+            <% } %>
+            <% if(product[0].images[4] != ""){ %>
+                <div class="carousel-item" data-interval="5000">
+                  <img src=<%=product[0].images[4] %> style="width:40%" class="d-block w-100" alt="...">
+                </div>
+                <% } %>
+        </div>
+    
+        <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleInterval" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+  <div ng-controller="productCtrl" class="product-description">
+    <h1><b><%= product[0].name %></b></h1>
+    <p class="text1"><%= product[0].description %></p><br>
+    <p class="text2" style="display:inline;">Brand:<div class="text1" style="display:inline;"><%= product[0].brandName %></div></p>
+    <p class="text2" style="display:inline;">Mrp:&nbsp;<span class="text1">$</span><div class="text1" style="display:inline;" id="cp" ><%= product[0].mrp %></div></p>
+    <p class="text2" style="display:inline;">Price:&nbsp;<span class="text1">$</span><div class="text1" style="display:inline;" id="sp" ng-module="s"><%= product[0].price %></div></p>
+    <p class="text2" style="display:inline;">You save:&nbsp;<span class="text1">$</span><div class="text1" style="display:inline;" id="ys">{{save}}</div>(<div style="display:inline;" id="per">{{discount}}</div>%)</p>
+    <p><span class="highlight-1">(inclusive of all taxes)</span></p>
+
+    <div ng-if="stock=='InStock'" style="color:green;">In Stock</div>
+    <div ng-if="stock=='OutOfStock'" style="color:red;">Out of Stock</div>
+</div>
+</div>
+<div class="features">
+<h1>Features</h1>
+<ul>
+    <li><%= product[0].features[0] %></li><br>
+    <li><%= product[0].features[1] %></li><br>
+    <li><%= product[0].features[2] %></li><br>
+    <li><%= product[0].features[3] %></li><br>
+    <li><%= product[0].features[4] %></li><br>
+</ul>
+</div>
+<footer>
+    <div class="footer" id="footer">
+      <div class="footer-content">
+        <div class="footer-contact">
+          <h1>Contact</h1>
+          <br />
+          <form action="footer.html" method="post">
+            <input
+              type="text"
+              class="text-field"
+              name="name"
+              placeholder="Name..."
+            />
+            <input
+              type="email"
+              class="text-field"
+              name="email"
+              placeholder="Email..."
+            />
+            <textarea
+              rows="10"
+              cols="50"
+              name="message"
+              class="message-field"
+              placeholder="Type your message here..."
+            ></textarea>
+
+            <button type="submit" class="btn">
+              <i class="fas fa-paper-plane"></i>&nbsp;SEND
+            </button>
+            <button type="reset" class="btn">
+              <i class="fa fa-refresh"></i>&nbsp; RESET
+            </button>
+          </form>
+        </div>
+        <div style="height: 30px"></div>
+
+        <div class="footer-about">
+          <h2>Address</h2>
+          <br />
+          <address>
+            <%= data.address %> 
+          </address>
+          <br />
+          <h2>Contact</h2>
+          <br />
+          <div class="contact-info">
+            <span><i class="fas fa-phone"></i>&nbsp; <%= data.phone %> </span>
+
+            <span
+              ><i class="fas fa-envelope"></i>&nbsp; <%= data.email %> </span
+            >
+          </div>
+          <div class="social">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-google-plus-g"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <div class="bottom"><p>&copy; <%=data.shopname%> 2020</p></div>
+    
+</body>
+</html>

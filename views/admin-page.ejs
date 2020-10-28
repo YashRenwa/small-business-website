@@ -1,0 +1,325 @@
+<html>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
+    <style>
+        body {font-family: Arial, Helvetica, sans-serif;}
+        * {box-sizing: border-box;}
+        input[type=text], input[type=url] {
+            width: 80%;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            display: inline-block;
+            border: none;
+            background: #f1f1f1;
+        }
+        input[ng-model=addMe]{
+            width:75%;
+            padding:15px;
+            margin:5px 0 22px 0;
+            display:inline-block;
+            border:none;
+            background: #f1f1f1;
+        }
+        .heading{
+            font-size:50px;
+            color:#ffae00;
+            font-family:Helvetica;
+
+        }
+        hr {
+            border: 1px solid #f1f1f1;
+            margin-bottom: 25px;
+        }
+        .model {
+            position: fixed;
+            left: 0; 
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: #5c5c5c;
+            padding-top: 50px;
+            
+            
+        }
+        .model-content {
+            padding-left: 10%;
+            background-color: #fefefe;
+            margin: 5% auto 15% auto; 
+            border: 1px solid #888;
+            width: 80%; 
+            padding-bottom: 5%;
+            padding-top:5%;
+            padding-right:10%
+        }
+        #prod-select{
+            width:80%;
+            display:inline-block;
+        }
+        .btn-add{
+            padding:13px;
+            margin:10px 0 22px 0;
+            width:12%;
+            display:inline-block;
+            border:none;
+            background:#ffae00;
+            border-radius: 10px;
+            font-size: 15px;
+            margin-left:5% ;
+
+        }
+        .btn-product{
+            padding:13px;
+            margin:10px 0 22px 0;
+            width:15%;
+
+            display:inline-block;
+            border:none;
+            background:#ffae00;
+            border-radius: 10px;
+            font-size: 20px;
+        }
+        .login{
+            width: 80%;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            display: inline-block;
+            border: none;
+            background: #f1f1f1;
+        }
+
+        .login-btn{
+            background-color:#ffae00;
+            color: black;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 10%;
+            opacity: 0.9;
+            border-radius: 10px;
+        }
+        select{
+            width:60%;
+             padding:15px;
+             margin:30px 0 22px 0;
+             display:inline-block;
+             border:1px;
+            background:#e6e6e6
+        }
+        .list{
+                padding:0px;
+                margin:0;
+                width:100%;
+                overflow:auto;
+            }
+        .list li{
+            padding:16px 16px;
+            border-bottom:1px solid #ddd;
+            
+            width:80%;
+        }
+        .list_item{
+            float:right;
+            margin-right:16px;
+            font-size: 20px;
+            background-color:#ffae00;
+             padding-left: 10px;
+             padding-right: 10px;
+             border:none;
+             border-radius: 5px;
+        }
+
+        .err{
+            color:red;
+        }
+        .txtarea{
+            width: 80%;
+            height:150px;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            display: inline-block;
+            border: none;
+            background: #f1f1f1;
+        }
+        .feat-txt-area{
+            width:75%;
+            height:60px;
+            padding:15px;
+            margin-right: 1 5px;
+            margin:5px 0 22px 0;
+            display:flex;
+            border:none;
+            background: #f1f1f1;
+        }
+        .submit-btn{
+            background-color:#ffae00;
+            color: black;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 20%;
+            opacity: 0.9;
+            border-radius: 10px;
+        }
+        .reset-btn{
+            background-color:#ffae00;
+            color: black;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 20%;
+            opacity: 0.9;
+            border-radius: 10px;
+        }
+        #product-input{
+            width:60%;
+        }
+        .txt{
+            font-size:18px;
+            color:black;
+        }
+
+        .model-content-login {
+            
+        }
+
+
+    </style>
+    <script>
+        var app = angular.module("admin", []);
+        app.controller("mainctrl",function($scope){
+
+            $scope.loginuser="admin";
+
+            $scope.productname= [];
+            $scope.addItem2 = function () {
+                $scope.productname.push("product1");           
+            }
+            $scope.removeItem = function (x) {
+                $scope.errortext = "";    
+                $scope.productname.splice(x, 1);
+            }
+
+            $scope.admin_form=false;
+            $scope.login_form=true;
+            $scope.swap=function(){
+                console.log($scope.loginuser);
+            
+                $scope.admin_form=true;
+                $scope.login_form=false;
+                $scope.heading='Admin Page';
+               
+                
+                
+            }
+
+        });
+    </script>
+    <div ng-app="admin" ng-controller="mainctrl" class="model"> 
+        <center><p class="heading" ng-show="login_form">Login Form</p></center>
+        <center><p class="heading" ng-show="admin_form">Admin Form</p></center>
+        
+            <div ng-show="login_form">
+                <form class="model-content-login" name="myForm" nonvalidate></form>
+                <center>
+                <table style="width:56%;background-color:white; padding: 30px;">
+                    <tr>
+                        <td class="txt">Username:</td>
+                        <td><input type="text" class="login" ng-model="loginuser"></td>
+                    </tr>
+                    <tr>
+                        <td class="txt">Password:</td>
+                        <td><input type="password" class="login" ng-model="loginpassword"></td>
+                    </tr>
+                </table>
+                <button type="button" class="login-btn" ng-click="swap()">Login</button>
+                <button type="reset" class="login-btn">Reset</button>
+                </center>
+            </form>
+            </div>
+            <br>
+            <div ng-show="admin_form">
+        <form action="/admin" method="POST" class="model-content" name="myForm">
+
+            <p class="txt">User Name:</p>
+            <input type="text"  placeholder="Enter your User Name" name="username" ng-init="username='<%= data.userName%>'"  ng-required="true" ng-model="username" required >
+          <span  style="color:red"  ng-show="myForm.username.$error.required">Required!</span> 
+
+          <p class="txt">Password:</p>
+            <input type="text"  placeholder="Enter your password" name="password" ng-init="password='<%= data.password%>'"  ng-required="true" ng-model="password" required >
+          <span  style="color:red"  ng-show="myForm.password.$error.required">Required!</span>
+
+          <p class="txt">Your Shop Name:</p>
+            <input type="text"  placeholder="Enter your shop name" name="name" ng-init="name='<%= data.shopname%>'"  ng-required="true" ng-model="name" required >
+          <span  style="color:red"  ng-show="myForm.name.$error.required">Required!</span> 
+            
+             
+           
+            <p class="txt">Address:</p>
+            <textarea class="txtarea"  placeholder="Enter your shop Address" name="address"><%=data.address%></textarea>
+            <p class="txt">Phone:</p>
+            <input type="text" placeholder="Enter phone number here" type="number" name="phone" ng-init="user.phone='<%= data.phone%>'"
+             class="form-control" 
+             ng-minlength="10" 
+             ng-maxlength="10"  
+             id="inputPhone" 
+             name="phone" 
+             
+             ng-model="user.phone" 
+             ng-required="true">
+                <span  style="color:red" class="error" ng-show="myForm.phone.$error.required">Required!</span>
+                <span style="color:red" class="error" ng-show="myForm.phone.$error.minlength">Phone no not less that 10 char.</span>
+                <span style="color:red" class="error" ng-show="myForm.phone.$error.maxlength">Phone no not more than 11 char.</span>
+                <p class="txt">Email:</p>
+                <input type="text" name="email" ng-init="txtemail='<%= data.email%>'" ng-model="txtemail" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" required />
+  
+                <span style="color:red"ng-show="myForm.email.$error.required">Email is required.</span>
+                <span style="color:red"ng-show="myForm.email.$dirty && myForm.email.$error.pattern">Invalid email address.</span>
+  
+
+            
+      
+       
+
+            <p class="txt">Shop Image URLs:</p>
+            <div>
+                <div>
+                    <input type="url" placeholder="Enter image URL 1 Here" ng-model="imgUrl1" class="imgUrl1" name="imgUrl1" ng-init="imgUrl1='<%= data.carouselImages[0]%>'">
+                    <input type="url" placeholder="Enter image URL 2 Here" ng-model="imgUrl2" class="imgUrl2" name="imgUrl2" ng-init="imgUrl2='<%= data.carouselImages[1]%>'">
+                    <input type="url" placeholder="Enter image URL 3 Here" ng-model="imgUrl3" class="imgUrl3" name="imgUrl3" ng-init="imgUrl3='<%= data.carouselImages[2]%>'">
+                    <input type="url" placeholder="Enter image URL 4 Here" ng-model="imgUrl4" class="imgUrl4" name="imgUrl4" ng-init="imgUrl4='<%= data.carouselImages[3]%>'">
+                    <input type="url" placeholder="Enter image URL 5 Here" ng-model="imgUrl5" class="imgUrl5" name="imgUrl5" ng-init="imgUrl5='<%= data.carouselImages[4]%>'">
+                </div>
+            </div>
+            <div >
+                <div>
+                    <p class="txt">Products:<a href="http://localhost:3000/product_new" style="text-decoration: none;" class="btn-add" >Add Product</a></p>
+                </div>
+               <% for(var i=0; i<data.products.length;i++){ %> 
+                <ul class="list">
+                    <li class="lpad"><%= data.products[i].name%><span>
+                        <a href="http://localhost:3000/productchanges_admin/<%=data.products[i].id%>" style="text-decoration: none;" class="list_item">Make Changes</a>
+                        </span>
+
+                        <span>
+                            <a href="http://localhost:3000/productdelete_admin/<%=data.products[i].id%>" style="text-decoration: none;" class="list_item">Delete Product</a>
+                            </span>
+                    </li>
+                </ul>
+            <% } %>
+            </div>
+            <button type="reset" class="reset-btn">Reset</button>
+            <button type="submit" class="submit-btn">Save changes</button>
+        
+        </form>
+        </div>
+
+    </div>
+    
+</div>
+</body>
+</html>
