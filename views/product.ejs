@@ -182,8 +182,8 @@ body {
     height: auto;
   }
   .product-image {
-    width: auto;
-    height: auto;
+    width: 600px;
+    height: 600px;
   }
   .product-description {
     width: auto;
@@ -471,7 +471,7 @@ img .contact-icon {
     <div id="carouselExampleInterval" class="carousel slide" style="margin: auto;" data-ride="carousel">
     <div class="carousel-inner" >
 
-        <h1 style="margin: auto; font-size: 2vw;">Product Images</h1>
+        <h1 style="margin: auto; font-size: 25px;">Product Images</h1>
 
         <% if(product[0].images[0] != ""){ %>
             <div class="carousel-item active" data-interval="5000">
@@ -514,14 +514,13 @@ img .contact-icon {
     <h1><b><%= product[0].name %></b></h1>
     <p class="text1"><%= product[0].description %></p><br>
     <p class="text2" style="display:inline;">Brand:<div class="text1" style="display:inline;"><%= product[0].brandName %></div></p>
-    <p class="text2" style="display:inline;">Mrp:&nbsp;<span class="text1">$</span><div class="text1" style="display:inline;" id="cp" ng-model="c"><%= product[0].mrp %></div></p>
-    <p class="text2" style="display:inline;">Price:&nbsp;<span class="text1">$</span><div class="text1" style="display:inline;" id="sp" ng-model="s"><%= product[0].price %></div></p>
+    <p class="text2" style="display:inline;">Mrp:&nbsp;<span class="text1">$</span><div class="text1" style="display:inline;" id="cp" ng-model="cp"><%= product[0].mrp %></div></p>
+    <p class="text2" style="display:inline;">Price:&nbsp;<span class="text1">$</span><div class="text1" style="display:inline;" id="sp" ng-model="sp"><%= product[0].price %></div></p>
     <p class="text2" style="display:inline;">You save:&nbsp;<span class="text1">$</span><div class="text1" style="display:inline;" id="ys" >{{save}}</div>(<div style="display:inline;" id="per">{{discount}}</div>%)</p>
     <p><span class="highlight-1">(inclusive of all taxes)</span></p>
 
     <div ng-if="stock=='InStock'" style="color:green;">In Stock</div>
     <div ng-if="stock=='OutOfStock'" style="color:red;">Out of Stock</div>
-    {{hello}}
 </div>
 
 </div>
@@ -603,11 +602,10 @@ img .contact-icon {
   <script>
     var app_product = angular.module("productdet", []);
     app_product.controller("productCtrl",function($scope){
-        $scope.hello='hello world';
-        $scope.c=1000;
-        $scope.s=500;
-        $scope.disount=(($scope.c-$scope.s)/$scope.c)*100;
-        $scope.save=($scope.c-$scope.s);
+        //$scope.c=1000;
+        //$scope.s=500;
+        $scope.discount=(($scope.cp-$scope.sp)/$scope.cp)*100;
+        $scope.save=($scope.cp-$scope.sp);
         $scope.stock="InStock";
     });
   </script>
