@@ -193,8 +193,6 @@
         var app = angular.module("admin", []);
         app.controller("mainctrl",function($scope){
 
-            $scope.loginuser="admin";
-
             $scope.productname= [];
             $scope.addItem2 = function () {
                 $scope.productname.push("product1");           
@@ -204,17 +202,18 @@
                 $scope.productname.splice(x, 1);
             }
 
+
+            $scope.incorrect=false;
             $scope.admin_form=false;
             $scope.login_form=true;
             $scope.swap=function(){
-                console.log($scope.loginuser);
-            
+                if($scope.loginuser==$scope.username && $scope.loginpassword==$scope.password){
                 $scope.admin_form=true;
                 $scope.login_form=false;
                 $scope.heading='Admin Page';
-               
-                
-                
+                }else{
+                    $scope.incorrect=true;
+                }
             }
 
         });
@@ -236,6 +235,7 @@
                         <td><input type="password" class="login" ng-model="loginpassword"></td>
                     </tr>
                 </table>
+                <p ng-show="incorrect" style="color: white;">User Name and Password are incorrect</p>
                 <button type="button" class="login-btn" ng-click="swap()">Login</button>
                 <button type="reset" class="login-btn">Reset</button>
                 </center>
