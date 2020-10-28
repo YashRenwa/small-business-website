@@ -128,11 +128,9 @@ body {
   justify-content: center;
 }
 .product-image {
-  max-width: 600px;
-  max-height: 600px;
+  width: 600px;
+  height: 600px;
   float: none;
-  height: auto;
-  width: auto;
   display: inline-block;
   margin-left: 30px;
   margin-top: 30px;
@@ -442,17 +440,11 @@ img .contact-icon {
 }
     </style>
      
-</head>
-<script>
-    var app = angular.module("product_det", []);
-    app.controller("produtctrl",function($scope){
-        $scope.disount=(($scopr.c-$scope.s)/$scope.c)*100;
-        $scope.save=($scope.c-$scope.s);
-        $scope.stock="InStock"
-    });
-</script>
-<body ng-app="product_det">
-    
+  </head>
+  
+
+<body>
+  
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#"><%= data.shopname %></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -476,34 +468,34 @@ img .contact-icon {
       </nav>
   <div class="p-display">
     <div class="product-image">
-    <div id="carouselExampleInterval" class="carousel slide" style="width:70%;margin: auto;" data-ride="carousel">
+    <div id="carouselExampleInterval" class="carousel slide" style="margin: auto;" data-ride="carousel">
     <div class="carousel-inner" >
 
-        <h1 style="margin: auto; font-size: 2vw;">Our Shop Images</h1>
+        <h1 style="margin: auto; font-size: 2vw;">Product Images</h1>
 
         <% if(product[0].images[0] != ""){ %>
             <div class="carousel-item active" data-interval="5000">
-              <img src=<%= product[0].images[0] %> style="width:40%" class="d-block w-100" alt="...">
+              <img src=<%= product[0].images[0] %> style="width:70%" class="d-block w-100" alt="...">
             </div>
             <% } %>
             <% if(product[0].images[1] != ""){ %>
                 <div class="carousel-item" data-interval="5000">
-                  <img src=<%=product[0].images[1] %> style="width:40%" class="d-block w-100" alt="...">
+                  <img src=<%=product[0].images[1] %> style="width:70%" class="d-block w-100" alt="...">
                 </div>
                 <% } %>
           <% if(product[0].images[2] != ""){ %>
           <div class="carousel-item" data-interval="5000">
-            <img src=<%=product[0].images[2] %> style="width:40%" class="d-block w-100" alt="...">
+            <img src=<%=product[0].images[2] %> style="width:70%" class="d-block w-100" alt="...">
           </div>
           <% } %>
           <% if(product[0].images[3] != ""){ %>
             <div class="carousel-item" data-interval="5000">
-              <img src=<%=product[0].images[3] %> style="width:40%" class="d-block w-100" alt="...">
+              <img src=<%=product[0].images[3] %> style="width:70%" class="d-block w-100" alt="...">
             </div>
             <% } %>
             <% if(product[0].images[4] != ""){ %>
                 <div class="carousel-item" data-interval="5000">
-                  <img src=<%=product[0].images[4] %> style="width:40%" class="d-block w-100" alt="...">
+                  <img src=<%=product[0].images[4] %> style="width:70%" class="d-block w-100" alt="...">
                 </div>
                 <% } %>
         </div>
@@ -518,19 +510,22 @@ img .contact-icon {
         </a>
       </div>
     </div>
-  <div ng-controller="productCtrl" class="product-description">
+  <div ng-app="productdet"  ng-controller="productCtrl" class="product-description">
     <h1><b><%= product[0].name %></b></h1>
     <p class="text1"><%= product[0].description %></p><br>
     <p class="text2" style="display:inline;">Brand:<div class="text1" style="display:inline;"><%= product[0].brandName %></div></p>
-    <p class="text2" style="display:inline;">Mrp:&nbsp;<span class="text1">$</span><div class="text1" style="display:inline;" id="cp" ><%= product[0].mrp %></div></p>
-    <p class="text2" style="display:inline;">Price:&nbsp;<span class="text1">$</span><div class="text1" style="display:inline;" id="sp" ng-module="s"><%= product[0].price %></div></p>
-    <p class="text2" style="display:inline;">You save:&nbsp;<span class="text1">$</span><div class="text1" style="display:inline;" id="ys">{{save}}</div>(<div style="display:inline;" id="per">{{discount}}</div>%)</p>
+    <p class="text2" style="display:inline;">Mrp:&nbsp;<span class="text1">$</span><div class="text1" style="display:inline;" id="cp" ng-model="c"><%= product[0].mrp %></div></p>
+    <p class="text2" style="display:inline;">Price:&nbsp;<span class="text1">$</span><div class="text1" style="display:inline;" id="sp" ng-model="s"><%= product[0].price %></div></p>
+    <p class="text2" style="display:inline;">You save:&nbsp;<span class="text1">$</span><div class="text1" style="display:inline;" id="ys" >{{save}}</div>(<div style="display:inline;" id="per">{{discount}}</div>%)</p>
     <p><span class="highlight-1">(inclusive of all taxes)</span></p>
 
     <div ng-if="stock=='InStock'" style="color:green;">In Stock</div>
     <div ng-if="stock=='OutOfStock'" style="color:red;">Out of Stock</div>
+    {{hello}}
 </div>
+
 </div>
+
 <div class="features">
 <h1>Features</h1>
 <ul>
@@ -605,6 +600,16 @@ img .contact-icon {
     </div>
   </footer>
   <div class="bottom"><p>&copy; <%=data.shopname%> 2020</p></div>
-    
+  <script>
+    var app_product = angular.module("productdet", []);
+    app_product.controller("productCtrl",function($scope){
+        $scope.hello='hello world';
+        $scope.c=1000;
+        $scope.s=500;
+        $scope.disount=(($scope.c-$scope.s)/$scope.c)*100;
+        $scope.save=($scope.c-$scope.s);
+        $scope.stock="InStock";
+    });
+  </script>
 </body>
 </html>
