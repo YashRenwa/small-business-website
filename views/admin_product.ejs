@@ -162,7 +162,7 @@
             </div>
             
             <p>Brand:</p>  
-            <input type="text" placeholder="Brand name" ng-init="imgUrl1='<%=product[0].brand%>'" ng-model="val2" name="val2" required>
+            <input type="text" placeholder="Brand name" ng-init="val2='<%=product[0].brandName%>'" ng-model="val2" name="val2" required>
             <span ng-show="myForm.val2.$dirty && myForm.val2.$invalid">
             <span  style="color:red" ng-show="myForm.val2.$error.required">This field is required</span>
             </span>

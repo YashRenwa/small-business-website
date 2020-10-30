@@ -33,9 +33,11 @@ const mainSchema = {
     ]
 };
 
+
 const main = mongoose.model("Main", mainSchema);
 
-const defaultMain = new main({
+const defaultMain = new main(
+    {
     userName: "admin",
     password: "admin",
     shopname : "Your Shop Name",
@@ -193,11 +195,12 @@ const defaultMain = new main({
     ]
 });
 
-app.get("/", function(rea,res){
+
+app.get("/", function(req,res){
     main.find({}, function(err, foundItems){
         
         if(foundItems.length === 0){
-            main.insertMany(defaultMain, (error) => {
+            main.insertMany(defaultMain, (error)=>{
                 if(error){
                     console.log(error);
                 }else{
@@ -215,7 +218,7 @@ app.get("/", function(rea,res){
 app.get("/product/:id", function(req,res){
     main.find({}, function(err, foundItems){
         res.render("product", {
-            product: req.params.id !== undefined ? foundItems[0].products.filter(function(obj) {return obj.id== req.params.id}) : foundItems[0].products, data:foundItems[0]
+            product: req.params.id !== undefined ? foundItems[0].products.filter(function(obj) {return obj.id == req.params.id}) : foundItems[0].products, data:foundItems[0]
         })
     })
     
@@ -250,7 +253,6 @@ app.get("/admin",function(req,res){
             res.render("admin-page",{data:foundItems[0]});
         }
     })
-    
 })
 
 app.post("/product_update/:id", function(req,res){
@@ -272,11 +274,11 @@ app.post("/product_update/:id", function(req,res){
     const pfeature5 = req.body.feature5;
     const featurearr = [pfeature1, pfeature2, pfeature3, pfeature4, pfeature5];
     const imgarr = [mimgUrl1, mimgUrl2, mimgUrl3, mimgUrl4, mimgUrl5]; 
-    main.updateMany({'products._id':req.params.id}, {$set: {'products.$.name':pname,'products.$.cardImgUrl':pcardUrl,'products.$.images':imgarr,'products.$.description':pdescription,'products.$.mrp':pmrp,'products.$.price':pprice,'products.$.features':featurearr, } },  function(err, res) {
+    main.updateMany({'products._id':req.params.id}, {$set: {'products.$.name':pname,'products.$.cardImgUrl':pcardUrl,'products.$.images':imgarr,'products.$.description':pdescription,'products.$.mrp':pmrp,'products.$.price':pprice,'products.$.brandName':pbrand,'products.$.features':featurearr, } },  function(err, res) {
         if (err) throw err;
         console.log("Product Updated");
       })
-      res.redirect("/admin");
+      res.redirect("/");
 })
 
 app.get("/product_new",function(req,res){
@@ -302,11 +304,11 @@ app.post("/product_new_update", function(req,res){
     const pfeature5 = req.body.feature5;
     const featurearr = [pfeature1, pfeature2, pfeature3, pfeature4, pfeature5];
     const imgarr = [mimgUrl1, mimgUrl2, mimgUrl3, mimgUrl4, mimgUrl5];
-    main.updateMany({}, {$push:{"products": {'name':pname,'cardImgUrl':pcardUrl,'images':imgarr,'description':pdescription,'mrp':pmrp,'price':pprice,'features':featurearr, } }}, {safe: true, upsert: true}, function(err, res) {
+    main.updateMany({}, {$push:{"products": {'name':pname,'cardImgUrl':pcardUrl,'brandName':pbrand,'images':imgarr,'description':pdescription,'mrp':pmrp,'price':pprice,'features':featurearr, } }}, {safe: true, upsert: true}, function(err, res) {
         if (err) throw err;
         console.log("New Product Added");
       })
-      res.redirect("/admin");
+      res.redirect("/");
 });
 
 
