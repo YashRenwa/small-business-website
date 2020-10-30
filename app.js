@@ -41,9 +41,9 @@ const defaultMain = new main({
     shopname : "Your Shop Name",
     carouselImages : [
         "https://images.unsplash.com/photo-1603270227428-3ea5d22b0dd8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1352&q=80",
-        "https://images.unsplash.com/photo-1512666369269-4442570b7146?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-        "https://images.unsplash.com/photo-1514379050824-67a9da2afea3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-        "https://images.unsplash.com/photo-1519307021830-e30ce3fd781d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+        "https://i.pinimg.com/originals/fb/76/ad/fb76ad47df00572d02b895eb02f4ecd9.jpg",
+        "https://wallpapercave.com/wp/wp5339483.jpg",
+        "https://wallpapercave.com/wp/wp343115.jpg",
         ""
     ],
     phone: 999999999,
@@ -312,7 +312,7 @@ app.post("/product_new_update", function(req,res){
 
 app.get("/productchanges_admin/:id",function(req,res){
     main.find({}, function(err, foundItems){
-        res.render("admin_product_changes", {
+        res.render("admin_product", {
             product: req.params.id !== undefined ? foundItems[0].products.filter(function(obj) {return obj.id== req.params.id}) : foundItems[0].products
         })
     })

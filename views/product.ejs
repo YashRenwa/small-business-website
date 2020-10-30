@@ -3,8 +3,8 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://kit.fontawesome.com/07438abb25.js" crossorigin="anonymous"></script>
+    <script src="product.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
@@ -128,9 +128,11 @@ body {
   justify-content: center;
 }
 .product-image {
-  width: 600px;
-  height: 600px;
+  max-width: 600px;
+  max-height: 600px;
   float: none;
+  height: auto;
+  width: auto;
   display: inline-block;
   margin-left: 30px;
   margin-top: 30px;
@@ -182,8 +184,8 @@ body {
     height: auto;
   }
   .product-image {
-    width: 600px;
-    height: 600px;
+    width: auto;
+    height: auto;
   }
   .product-description {
     width: auto;
@@ -440,13 +442,17 @@ img .contact-icon {
 }
     </style>
      
-  </head>
-  
-
-<body>
-  
+</head>
+<script>
+    var app = angular.module("product_det", []);
+    
+    app.controller("produtctrl",["$scope","$window",($scope,$window)=>{
+    }]);
+</script>
+<body ng-app="product_det"ng-controller="productCtrl">
+    
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#"><%= data.shopname %></a>
+        <a class="navbar-brand" href="http://localhost:3000/"><%= data.shopname %></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -457,7 +463,7 @@ img .contact-icon {
               <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Products</a>
+              <a class="nav-link" href="#">Features</a>
             </li>
             <li class="nav-item">
               <a class="nav-link " href="#">Contact Us</a>
@@ -466,39 +472,38 @@ img .contact-icon {
         
         </div>
       </nav>
-  <div class="p-display">
-    <div class="product-image">
-    <div id="carouselExampleInterval" class="carousel slide" style="margin: auto;" data-ride="carousel">
+  <div class="row" style="padding-top: 50px; width: 100%;margin-right: 0px;">
+    <div class="col-lg-6 " style="padding-right: 0px;">
+    <div id="carouselExampleInterval" class="carousel slide" style="width:70%;margin: auto;" data-ride="carousel">
     <div class="carousel-inner" >
-
-        <h1 style="margin: auto; font-size: 25px;">Product Images</h1>
 
         <% if(product[0].images[0] != ""){ %>
             <div class="carousel-item active" data-interval="5000">
-              <img src=<%= product[0].images[0] %> style="width:70%" class="d-block w-100" alt="...">
+              <img src=<%= product[0].images[0] %> style="width:40%" class="d-block w-100" alt="...">
             </div>
             <% } %>
             <% if(product[0].images[1] != ""){ %>
                 <div class="carousel-item" data-interval="5000">
-                  <img src=<%=product[0].images[1] %> style="width:70%" class="d-block w-100" alt="...">
+                  <img src=<%=product[0].images[1] %> style="width:40%" class="d-block w-100" alt="...">
                 </div>
                 <% } %>
           <% if(product[0].images[2] != ""){ %>
           <div class="carousel-item" data-interval="5000">
-            <img src=<%=product[0].images[2] %> style="width:70%" class="d-block w-100" alt="...">
+            <img src=<%=product[0].images[2] %> style="width:40%" class="d-block w-100" alt="...">
           </div>
           <% } %>
           <% if(product[0].images[3] != ""){ %>
             <div class="carousel-item" data-interval="5000">
-              <img src=<%=product[0].images[3] %> style="width:70%" class="d-block w-100" alt="...">
+              <img src=<%=product[0].images[3] %> style="width:40%" class="d-block w-100" alt="...">
             </div>
             <% } %>
             <% if(product[0].images[4] != ""){ %>
                 <div class="carousel-item" data-interval="5000">
-                  <img src=<%=product[0].images[4] %> style="width:70%" class="d-block w-100" alt="...">
+                  <img src=<%=product[0].images[4] %> style="width:40%" class="d-block w-100" alt="...">
                 </div>
                 <% } %>
         </div>
+      
     
         <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -510,29 +515,32 @@ img .contact-icon {
         </a>
       </div>
     </div>
-  <div ng-app="productdet"  ng-controller="productCtrl" class="product-description">
+  <div ng-controller="productCtrl" class="col-lg-6 "style="padding-right: 0px; padding-left:20px; width: 100%;">
     <h1><b><%= product[0].name %></b></h1>
     <p class="text1"><%= product[0].description %></p><br>
     <p class="text2" style="display:inline;">Brand:<div class="text1" style="display:inline;"><%= product[0].brandName %></div></p>
-    <p class="text2" style="display:inline;">Mrp:&nbsp;<span class="text1">$</span><div class="text1" style="display:inline;" id="cp" ng-model="cp"><%= product[0].mrp %></div></p>
-    <p class="text2" style="display:inline;">Price:&nbsp;<span class="text1">$</span><div class="text1" style="display:inline;" id="sp" ng-model="sp"><%= product[0].price %></div></p>
-    <p class="text2" style="display:inline;">You save:&nbsp;<span class="text1">$</span><div class="text1" style="display:inline;" id="ys" >{{save}}</div>(<div style="display:inline;" id="per">{{discount}}</div>%)</p>
-    <p><span class="highlight-1">(inclusive of all taxes)</span></p>
-
-    <div ng-if="stock=='InStock'" style="color:green;">In Stock</div>
-    <div ng-if="stock=='OutOfStock'" style="color:red;">Out of Stock</div>
+    <p class="text2" style="display:inline;">Mrp:&nbsp;<span class="text1">$</span><div class="text1" style="display:inline; text-decoration: line-through;" id="cp" ng-model="c" ><%= product[0].mrp %></div></p>
+    <p class="text2" style="display:inline;">Price:&nbsp;<span class="text1">$</span><div class="text1" style="display:inline;" id="sp" ng-model="s"><%= product[0].price %></div></p>
 </div>
-
 </div>
-
 <div class="features">
 <h1>Features</h1>
 <ul>
+  <% if(product[0].features[0] != ""){ %>
     <li><%= product[0].features[0] %></li><br>
+    <% } %> 
+    <% if(product[0].features[1] != ""){ %>
     <li><%= product[0].features[1] %></li><br>
+    <% } %> 
+    <% if(product[0].features[2] != ""){ %>
     <li><%= product[0].features[2] %></li><br>
+    <% } %> 
+    <% if(product[0].features[3] != ""){ %>
     <li><%= product[0].features[3] %></li><br>
+    <% } %> 
+    <% if(product[0].features[4] != ""){ %>
     <li><%= product[0].features[4] %></li><br>
+    <% } %> 
 </ul>
 </div>
 <footer>
@@ -541,7 +549,7 @@ img .contact-icon {
         <div class="footer-contact">
           <h1>Contact</h1>
           <br />
-          <form action="footer.html" method="post">
+          <form action="mailto:<%=data.email %>" method="post">
             <input
               type="text"
               class="text-field"
@@ -588,26 +596,12 @@ img .contact-icon {
               ><i class="fas fa-envelope"></i>&nbsp; <%= data.email %> </span
             >
           </div>
-          <div class="social">
-            <a href="#"><i class="fab fa-facebook"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-google-plus-g"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-          </div>
+          
         </div>
       </div>
     </div>
   </footer>
   <div class="bottom"><p>&copy; <%=data.shopname%> 2020</p></div>
-  <script>
-    var app_product = angular.module("productdet", []);
-    app_product.controller("productCtrl",function($scope){
-        //$scope.c=1000;
-        //$scope.s=500;
-        $scope.discount=(($scope.cp-$scope.sp)/$scope.cp)*100;
-        $scope.save=($scope.cp-$scope.sp);
-        $scope.stock="InStock";
-    });
-  </script>
+    
 </body>
 </html>

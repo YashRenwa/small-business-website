@@ -41,6 +41,7 @@
   background: #1b1b1b;
   transition: all 0.3s;
 }
+
 .btn {
   padding: 10px 15px;
   background: #fdbb04;
@@ -170,7 +171,7 @@ img .contact-icon {
     </style>
 
   </head>
-<body style="background-image: url('https://images.unsplash.com/photo-1528460033278-a6ba57020470?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60');background-repeat: no-repeat; width: 100%;background-attachment: fixed;background-size: cover;">
+<body style="background-image: url('https://cdn.wallpapersafari.com/8/59/0V5Tqe.jpg');background-repeat: no-repeat; width: 100%;background-attachment: fixed;background-size: cover;">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#"><%= data.shopname %></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -189,18 +190,18 @@ img .contact-icon {
               <a class="nav-link " href="#">Contact Us</a>
             </li>
           </ul>
-        
+         
         </div>
       </nav>
 
       
-
+      <h1 style="margin-left:10px;">Our Shop Images</h1> 
       <!-- Carousel -->
 
       <div id="carouselExampleInterval" class="carousel slide" style="width:70%;margin: auto;" data-ride="carousel">
         <div class="carousel-inner" >
 
-            <h1 style="margin: auto; font-size: 2vw;">Our Shop Images</h1>
+            
 
           <% if(data.carouselImages[0] != ""){ %>
             <div class="carousel-item active" data-interval="5000">
@@ -306,12 +307,6 @@ img .contact-icon {
               <span
                 ><i class="fas fa-envelope"></i>&nbsp; <%= data.email %> </span
               >
-            </div>
-            <div class="social">
-              <a href="#"><i class="fab fa-facebook"></i></a>
-              <a href="#"><i class="fab fa-twitter"></i></a>
-              <a href="#"><i class="fab fa-google-plus-g"></i></a>
-              <a href="#"><i class="fab fa-instagram"></i></a>
             </div>
           </div>
         </div>

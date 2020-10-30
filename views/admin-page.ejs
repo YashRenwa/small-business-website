@@ -160,7 +160,7 @@
             margin: 8px 0;
             border: none;
             cursor: pointer;
-            width: 20%;
+            width: 25%;
             opacity: 0.9;
             border-radius: 10px;
         }
@@ -234,8 +234,11 @@
                         <td class="txt">Password:</td>
                         <td><input type="password" class="login" ng-model="loginpassword"></td>
                     </tr>
+                    <tr>
+                        <td colspan="2"><center><p ng-show="incorrect" style="color: red;">User Name/Password is incorrect</p></center></td>
+                    </tr>
                 </table>
-                <p ng-show="incorrect" style="color: white;">User Name and Password are incorrect</p>
+                
                 <button type="button" class="login-btn" ng-click="swap()">Login</button>
                 <button type="reset" class="login-btn">Reset</button>
                 </center>
